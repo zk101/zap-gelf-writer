@@ -20,7 +20,7 @@ This will depend on the network MTU.  So either 1420, or 8154 are good starting 
 
 		w := zapcore.AddSync(gelf.New(gelf.DefaultConfig("127.0.0.1")))
 
-		core := zapcore.NewCore(zapcore.NewJSONEncoder(encoderCfg), w, loglevel)
+		core := zapcore.NewCore(zapcore.NewJSONEncoder(encoderCfg), w, zap.InfoLevel)
 		logger = zap.New(core).WithOptions(zap.Fields(
 			zap.String(gelf.VersionTag, gelf.Version),
 			zap.String(gelf.HostTag, "App ID or Host ID"),
